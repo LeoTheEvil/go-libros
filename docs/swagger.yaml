@@ -1,0 +1,103 @@
+basePath: /
+definitions:
+  main.Libro:
+    properties:
+      autor:
+        type: string
+      genero:
+        type: string
+      id:
+        type: integer
+      titulo:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API para gestionar libros (ABM)
+  title: API de Libros
+  version: "1.0"
+paths:
+  /libro/{id}:
+    delete:
+      parameters:
+      - description: ID del libro
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "204":
+          description: No Content
+      summary: Elimina un libro
+  /libros:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Libro'
+            type: array
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Libro a crear
+        in: body
+        name: libro
+        required: true
+        schema:
+          $ref: '#/definitions/main.Libro'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.Libro'
+      summary: Crea un nuevo libro
+  /libros/{id}:
+    get:
+      parameters:
+      - description: ID del libro
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Libro'
+        "404":
+          description: Libro no encontrado
+          schema:
+            type: string
+      summary: Obtiene un libro por ID
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID del libro
+        in: path
+        name: id
+        type: integer
+      - description: Libro actualizado
+        in: body
+        name: libro
+        required: true
+        schema:
+          $ref: '#/definitions/main.Libro'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Libro'
+      summary: Actualiza un libro
+swagger: "2.0"

@@ -1,0 +1,161 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API para gestionar libros (ABM)",
+        "title": "API de Libros",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/libro/{id}": {
+            "delete": {
+                "summary": "Elimina un libro",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del libro",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/libros": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/main.Libro"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Crea un nuevo libro",
+                "parameters": [
+                    {
+                        "description": "Libro a crear",
+                        "name": "libro",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Libro"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/main.Libro"
+                        }
+                    }
+                }
+            }
+        },
+        "/libros/{id}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Obtiene un libro por ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del libro",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Libro"
+                        }
+                    },
+                    "404": {
+                        "description": "Libro no encontrado",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Actualiza un libro",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del libro",
+                        "name": "id",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Libro actualizado",
+                        "name": "libro",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Libro"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Libro"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Libro": {
+            "type": "object",
+            "properties": {
+                "autor": {
+                    "type": "string"
+                },
+                "genero": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "titulo": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
