@@ -12,7 +12,7 @@ import (
 // @version 1.0
 // @description API para gestionar libros (ABM)
 
-// @hosst localhost:8080
+// @host localhost:8081
 // @BasePath /
 
 func main() {
@@ -26,5 +26,5 @@ func main() {
 	r.PUT("/libros/:id", ActualizarLibro)
 	r.DELETE("/libros/:id", EliminarLibro)
 
-	r.Run(":8080")
+	r.Run(":8081")
 }

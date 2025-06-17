@@ -6,27 +6,9 @@
         "contact": {},
         "version": "1.0"
     },
+    "host": "localhost:8081",
     "basePath": "/",
     "paths": {
-        "/libro/{id}": {
-            "delete": {
-                "summary": "Elimina un libro",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "ID del libro",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    }
-                }
-            }
-        },
         "/libros": {
             "get": {
                 "produces": [
@@ -134,6 +116,23 @@
                         "schema": {
                             "$ref": "#/definitions/main.Libro"
                         }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Elimina un libro",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del libro",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
                     }
                 }
             }

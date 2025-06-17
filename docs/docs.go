@@ -15,25 +15,6 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/libro/{id}": {
-            "delete": {
-                "summary": "Elimina un libro",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "ID del libro",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    }
-                }
-            }
-        },
         "/libros": {
             "get": {
                 "produces": [
@@ -143,6 +124,23 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "delete": {
+                "summary": "Elimina un libro",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del libro",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
             }
         }
     },
@@ -170,7 +168,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "",
+	Host:             "localhost:8081",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "API de Libros",

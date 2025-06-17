@@ -86,7 +86,7 @@ func ActualizarLibro(c *gin.Context) {
 // @Summary Elimina un libro
 // @Param id path int true "ID del libro"
 // @Success 204
-// @Router /libro/{id} [delete]
+// @Router /libros/{id} [delete]
 func EliminarLibro(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	for i, I := range libros {
